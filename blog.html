@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>블로그 · 화곡 셔츠룸 서버 웜업 | 마포 SF-T3</title>
+    <meta name="description" content="마포 서버 웜업의 진짜 기준. 화곡 셔츠룸 최적화가 왜 중요한지, 솔직하게 파헤친다. 010-6279-0862">
+    <meta name="keywords" content="화곡 셔츠룸, 서버 웜업, 마포, 서버 최적화, 네트워크 웜업, 블로그, 웜업 서비스, 성능 부스팅, 셔츠룸 서버, 화곡, 마포 서버">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://sf-t3-1779642675702-188.pages.dev/blog">
+    <meta property="og:title" content="블로그 · 화곡 셔츠룸 서버 웜업 | SF-T3">
+    <meta property="og:description" content="마포 서버 웜업의 진짜 기준. 화곡 셔츠룸 최적화가 왜 중요한지, 솔직하게 파헤친다. 010-6279-0862">
+    <meta property="og:type" content="website">
+    <style>
+        /* reset */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+            -webkit-text-size-adjust: 100%;
+        }
+        body {
+            font-family: 'Pretendard', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #0b0b0b;
+            color: #e5e5e5;
+            line-height: 1.6;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        /* global */
+        a {
+            color: #f0c040;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        a:hover {
+            color: #ffda7a;
+            text-decoration: underline;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        ul {
+            list-style: none;
+        }
+        strong {
+            color: #f0c040;
+            font-weight: 700;
+        }
+        /* spacing */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        .gap-48 {
+            height: 48px;
+        }
+        .section-gap {
+            padding: 80px 0;
+        }
+        .section-gap+.section-gap {
+            padding-top: 0;
+        }
+        /* typo brutal */
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-weight: 900;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            text-transform: uppercase;
+            word-break: break-word;
+        }
+        h1 {
+            font-size: clamp(2.4rem, 7vw, 5.2rem);
+            color: #f0c040;
+            text-shadow: 4px 4px 0 rgba(240, 192, 64, 0.15);
+        }
+        h2 {
+            font-size: clamp(1.8rem, 4vw, 3.2rem);
+            color: #f0c040;
+            border-left: 6px solid #f0c040;
+            padding-left: 20px;
+            margin-bottom: 32px;
+        }
+        h3 {
+            font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+            color: #f0c040;
+            margin-bottom: 16px;
+        }
+        h4 {
+            font-size: clamp(1rem, 2vw, 1.4rem);
+            color: #f0c040;
+            margin-bottom: 12px;
+        }
+        p {
+            font-size: 1.05rem;
+            color: #c8c4bc;
+            margin-bottom: 20px;
+            font-weight: 400;
+            line-height: 1.7;
+        }
+        .small-text {
+            font-size: 0.85rem;
+            color: #8a867e;
+            letter-spacing: 0.02em;
+        }
+        /* header + nav */
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(11, 11, 11, 0.95);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-bottom: 2px solid #2a2a2a;
+            padding: 12px 0;
+        }
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 900;
+            letter-spacing: -0.04em;
+            color: #f0c040;
+            text-transform: uppercase;
+            line-height: 1.2;
+        }
+        .logo span {
+            display: block;
+            font-size: 0.65rem;
+            color: #8a867e;
+            letter-spacing: 0.2em;
+            font-weight: 400;
+        }
+        .nav-list {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+        .nav-list a {
+            color: #c8c4bc;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            position: relative;
+            padding-bottom: 4px;
+        }
+        .nav-list a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #f0c040;
+            transition: width 0.25s ease;
+        }
+        .nav-list a:hover::after {
+            width: 100%;
+        }
+        .nav-list a.active {
+            color: #f0c040;
+        }
+        .nav-list a.active::after {
+            width: 100%;
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            padding: 6px 0;
+            background: none;
+            border: none;
+        }
+        .hamburger span {
+            display: block;
+            width: 28px;
+            height: 3px;
+            background: #f0c040;
+            border-radius: 2px;
+            transition: 0.25s ease;
+        }
+        .tel-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #f0c040;
+            color: #0b0b0b !important;
+            padding: 10px 20px;
+            font-weight: 800;
+            font-size: 0.9rem;
+            border-radius: 4px;
+            transition: background 0.2s ease, transform 0.15s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+        }
+        .tel-link:hover {
+            background: #ffda7a;
+            transform: scale(1.03);
+            text-decoration: none;
+        }
+        /* hero blog */
+        .hero-blog {
+            padding: 60px 0 40px;
+            border-bottom: 2px solid #1f1f1f;
+        }
+        .hero-blog .container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .hero-blog .badge {
+            display: inline-block;
+            background: #1f1f1f;
+            color: #f0c040;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            padding: 6px 14px;
+            border-radius: 2px;
+            text-transform: uppercase;
+            align-self: flex-start;
+            border: 1px solid #2a2a2a;
+        }
+        .hero-blog h1 {
+            margin-bottom: 8px;
+        }
+        .hero-blog .meta-line {
+            display: flex;
+            gap: 24px;
+            font-size: 0.85rem;
+            color: #8a867e;
+            flex-wrap: wrap;
+        }
+        .hero-blog .meta-line span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        /* blog content */
+        .blog-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .blog-content .lead {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #e5e5e5;
+            border-left: 4px solid #f0c040;
+            padding-left: 20px;
+            margin-bottom: 40px;
+        }
+        .blog-content blockquote {
+            border-left: 4px solid #f0c040;
+            padding: 16px 24px;
+            margin: 32px 0;
+            background: rgba(240, 192, 64, 0.05);
+            font-style: italic;
+            color: #e5e5e5;
+            font-size: 1.05rem;
+            border-radius: 0 4px 4px 0;
+        }
+        .blog-content blockquote strong {
+            color: #f0c040;
+        }
+        .blog-content .highlight-card {
+            background: #141414;
+            border: 1px solid #2a2a2a;
+            padding: 32px;
+            border-radius: 4px;
+            margin: 40px 0;
+            border-left: 6px solid #f0c040;
+        }
+        .blog-content .highlight-card h4 {
+            margin-bottom: 12px;
+        }
+        .blog-content .highlight-card p:last-child {
+            margin-bottom: 0;
+        }
+        .blog-content ul.blog-list {
+            margin: 24px 0 32px;
+            padding: 0;
+        }
+        .blog-content ul.blog-list li {
+            padding: 10px 0 10px 28px;
+            position: relative;
+            color: #c8c4bc;
+            font-size: 1.05rem;
+            border-bottom: 1px solid #1a1a1a;
+        }
+        .blog-content ul.blog-list li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #f0c040;
+            font-weight: 700;
+        }
+        .blog-content ul.blog-list li:last-child {
+            border-bottom: none;
+        }
+        .blog-content .cta-inline {
+            background: #0b0b0b;
+            border: 2px solid #f0c040;
+            padding: 32px 36px;
+            border-radius: 4px;
+            margin: 48px 0;
+            text-align: center;
+        }
+        .blog-content .cta-inline p {
+            font-size: 1.1rem;
+            margin-bottom: 16px;
+            color: #e5e5e5;
+        }
+        .blog-content .cta-inline .tel-link {
+            font-size: 1.1rem;
+            padding: 14px 32px;
+        }
+        /* footer */
+        .site-footer {
+            border-top: 2px solid #1f1f1f;
+            padding: 48px 0 32px;
+            margin-top: 40px;
+        }
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+        .footer-inner .copy {
+            font-size: 0.8rem;
+            color: #5a5a5a;
+        }
+        .footer-inner .footer-links {
+            display: flex;
+            gap: 24px;
+        }
+        .footer-inner .footer-links a {
+            font-size: 0.8rem;
+            color: #8a867e;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+        .footer-inner .footer-links a:hover {
+            color: #f0c040;
+        }
+        /* responsive 768 */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 16px;
+            }
+            .section-gap {
+                padding: 48px 0;
+            }
+            .nav-list {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(11, 11, 11, 0.98);
+                backdrop-filter: blur(12px);
+                -webkit-backdrop-filter: blur(12px);
+                flex-direction: column;
+                padding: 24px 20px;
+                gap: 16px;
+                border-bottom: 2px solid #2a2a2a;
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+            }
+            .nav-list.open {
+                display: flex;
+            }
+            .nav-list a {
+                font-size: 1rem;
+                padding: 8px 0;
+            }
+            .nav-list .tel-link {
+                margin-top: 8px;
+                justify-content: center;
+                width: 100%;
+            }
+            .hamburger {
+                display: flex;
+            }
+            .hero-blog {
+                padding: 40px 0 24px;
+            }
+            .hero-blog .meta-line {
+                gap: 12px;
+                font-size: 0.75rem;
+            }
+            .blog-content .lead {
+                font-size: 1.05rem;
+                padding-left: 16px;
+            }
+            .blog-content .highlight-card {
+                padding: 24px;
+            }
+            .blog-content .cta-inline {
+                padding: 24px 20px;
+            }
+            .blog-content .cta-inline .tel-link {
+                font-size: 1rem;
+                padding: 12px 24px;
+                width: 100%;
+                justify-content: center;
+            }
+            .footer-inner {
+                flex-direction: column;
+                text-align: center;
+                gap: 16px;
+            }
+            .footer-inner .footer-links {
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 16px;
+            }
+            h2 {
+                border-left-width: 4px;
+                padding-left: 14px;
+            }
+        }
+        @media (max-width: 480px) {
+            h1 {
+                font-size: clamp(1.8rem, 8vw, 2.4rem);
+            }
+            .logo {
+                font-size: 1.1rem;
+            }
+            .logo span {
+                font-size: 0.55rem;
+            }
+            .hero-blog .badge {
+                font-size: 0.6rem;
+                padding: 4px 10px;
+            }
+            .blog-content ul.blog-list li {
+                font-size: 0.95rem;
+                padding-left: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- header -->
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">
+                SF-T3
+                <span>서버 웜업 · 마포</span>
+            </a>
+            <button class="hamburger" id="hamburger" aria-label="메뉴 열기">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav>
+                <ul class="nav-list" id="navList">
+                    <li><a href="/">홈</a></li>
+                    <li><a href="/about">서비스</a></li>
+                    <li><a href="/blog" class="active">블로그</a></li>
+                    <li><a href="/contact">문의</a></li>
+                    <li><a href="tel:010-6279-0862" class="tel-link">010-6279-0862</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- hero blog -->
+    <section class="hero-blog">
+        <div class="container">
+            <span class="badge">🔥 블로그 · 에디토리얼</span>
+            <h
+</body>
+</html>
